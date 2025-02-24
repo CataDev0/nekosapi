@@ -3,9 +3,9 @@
 
 * Supports NekosAPI [**v1**](https://v1.nekosapi.com/docs) and [**v3**](https://nekosapi.com/docs)
 * [Axios](https://axios-http.com/)
-* [Proxy support](https://github.com/cataclym/nekosapi/issues/2)
+* [Proxy support](https://github.com/CataDev0/nekosapi/issues/2)
 
-## [Documentation](https://cataclym.github.io/nekosapi/)
+## [Documentation](https://CataDev0.github.io/nekosapi/)
 ### Quick overview
 #### Import NekosAPI v3:
 ```ts
@@ -36,7 +36,7 @@ api.getRandomImage("Catgirl")
     .then(image => console.log(image));
 ```
 
-### [Source code](https://github.com/cataclym/nekosapi)
+### [Source code](https://github.com/CataDev0/nekosapi)
 
 ---
 
