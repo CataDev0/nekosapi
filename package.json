@@ -1,6 +1,6 @@
 {
   "name": "nekosapi",
-  "version": "0.6.4",
+  "version": "0.7.0",
   "description": "Async wrapper for NekosAPI",
   "main": "index.js",
   "types": "index.d.ts",
