@@ -1,26 +1,37 @@
-const { NekosAPI } = require("./v3/NekosAPI");
-const { NekosAPIv1 } = require("./index");
+const { NekosAPI } = require("./v4/NekosAPI");
+const v4 = new NekosAPI();
 
-const v3 = new NekosAPI();
-
-const v1 = new NekosAPIv1();
+const argv = process.argv.slice(2);
 
 (async () => {
-    return Promise.all([v1.getRandomImage(), v3.getRandomImage()]);
+    if (argv[0] === "--all" || argv[0] === "-A") {
+        return Promise.all([
+            v4.getRandomImage(),
+            v4.getImage(),
+            v4.getImages(undefined, { limit: 1 }),
+            v4.getImageByID("4394")
+        ])
+    }
+    return v4.getRandomImage("Catgirl");
 })()
     .catch(err => {
-        console.log(err)
-        process.exit()
+        console.log(err);
+        testFailed();
     })
-    .then(([v1res, v3res]) => {
-        if (v1res && v3res) {
-            return console.log("Test finished. v1 and v3 image ids:", {
-                v1: v1res.id,
-                v3: v3res.id,
-            })
+    .then((v4res) => {
+        if (v4res) {
+            for (const res of Array.isArray(v4res) ? v4res : [v4res]) {
+                console.log("Response: v4 image ids:", {
+                    v4: res.id || "Array",
+                })
+            }
+            return console.log("Test finished.");
         }
-
         else {
-            throw new Error(`Test failed. ${v1res ? "v3: " + v3res : "v1: " + v1res}`)
+            return testFailed(v4res);
         }
-    })
+    });
+
+function testFailed(v4res = null) {
+    throw new Error(`Test failed. ${"v4: " + v4res}`);
+}

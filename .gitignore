@@ -19,6 +19,7 @@ lib
 /*.js
 /v1/
 /v3/
+/v4/
 
 index.js.map
 
